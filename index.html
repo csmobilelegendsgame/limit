@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body style="background:#121212;color:white;text-align:center;padding-top:60px;font-family:sans-serif">
+<h2 id="t">Limit: 7</h2>
+<div id="c" style="width:200px;height:200px;background:#00C853;border-radius:50%;margin:20px auto;display:flex;align-items:center;justify-content:center;font-size:70px;cursor:pointer">7</div>
+<br>
+<button id="r" style="padding:12px 30px;font-size:16px;border-radius:10px;border:none;background:#333;color:white;cursor:pointer">RESET</button>
+<script>
+let count = localStorage.getItem('c');
+if(count===null) count=7; else count=parseInt(count);
+
+function upd(){
+  document.getElementById('t').innerText='Sisa: '+count+' / 7';
+  document.getElementById('c').innerText= count>0 ? count : 'HABIS';
+  document.getElementById('c').style.background = count>0 ? '#00C853' : '#555';
+  localStorage.setItem('c',count);
+}
+
+document.getElementById('c').onclick = function(){
+  if(count>0){ count--; upd(); }
+};
+
+document.getElementById('r').onclick = function(){
+  count=7; upd();
+};
+
+upd();
+</script>
+</body>
+</html>
